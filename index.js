@@ -85,7 +85,7 @@ app.get('/dash/style.css', (req, res) => {
 
 app.use('/', express.static(__dirname + '/static'));
 app.use('/', require('./landing.js'));
-app.use('/dash', require('./dash.js'));
+app.use('/dash', require('./dash/index.js'));
 
 if (process.env.SERVER_PORT) {
   log('> Using ptero :D');
