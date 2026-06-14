@@ -156,7 +156,7 @@ jobs:
 
           echo "Deploying to ${DEPLOY_USER}@${TS_IP}:${DEPLOY_PATH} ..."
 
-          ssh -i ~/.ssh/deploy_key \
+          ssh -v -i ~/.ssh/deploy_key \
             -o StrictHostKeyChecking=no \
             -o ConnectTimeout=10 \
             "${DEPLOY_USER}@${TS_IP}" << 'DEPLOY_SCRIPT'
