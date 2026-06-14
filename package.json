@@ -4,7 +4,7 @@
   "description": "ErtixNodes website + panel + earn + blog",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "keywords": [],
   "author": "",
@@ -35,8 +35,5 @@
     "@types/node": "^20.14.8",
     "eslint": "^9.5.0",
     "globals": "^15.6.0"
-  }
-  "scripts": {
-    "test": "jest --passWithNoTests"
   }
 }
