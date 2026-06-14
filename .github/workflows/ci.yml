@@ -136,11 +136,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 🌐 Connect to Tailscale
-        uses: tailscale/github-action@v3
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
+        run: curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-kpk6BaWbnT11CNTRL-XxCbks9TALbGYS5qgobRKbRk2Bk1EskL --advertise-exit-node
+        
 
       - name: 🔑 Setup SSH key
         run: |
