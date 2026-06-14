@@ -142,18 +142,17 @@ jobs:
       - name: 🔑 Setup SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          ssh-keygen -t id_rsa
+          eval `ssh-agent
+          ssh-add ~/.ssh/id_rsa
+          echo "cat .ssh/id_rsa" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
       - name: 🚀 Deploy to server
         env:
-          TS_HOST: ${{ secrets.TS_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH || '/opt/panel' }}
         run: |
-          # Resolve Tailscale IP (works with both MagicDNS names and 100.x.x.x IPs)
-          TS_IP="$(tailscale ip -4 "$TS_HOST" 2>/dev/null || echo "$TS_HOST")"
-
           echo "Deploying to ${DEPLOY_USER}@${TS_IP}:${DEPLOY_PATH} ..."
 
           ssh -v -i ~/.ssh/deploy_key \
