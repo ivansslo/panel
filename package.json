@@ -36,8 +36,6 @@
     "eslint": "^9.5.0",
     "globals": "^15.6.0"
   }
-}
-{
   "scripts": {
     "test": "jest --passWithNoTests"
   }
